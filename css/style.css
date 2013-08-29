@@ -1,0 +1,147 @@
+body {
+	background: url(../img/bg1.png);
+}
+h1 {
+text-align: center;
+font-size: 1.5em;
+}
+h2 {
+	font-size: 1.3em;
+	padding: 0;
+	margin: 0 10px;
+}
+ul, ol {
+	font-size: 0.9em
+}
+.main {
+	width: 630px;
+	padding: 20px;
+	margin: auto;
+	border: 1px solid grey;
+	border-radius: 5px;
+	background: url(../img/bg.png);
+}
+.new-list {
+	width: 200px;
+} 
+.area{
+	width: 600px;
+	height: 300px;
+	border: 1px solid #979797;
+	border-radius: 5px;
+	margin: 20px auto;
+	background: #E3E4E6;
+	position: relative;
+}
+div[class^='point'] {
+	width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    border-radius: 50px;
+	box-shadow: 1px 1px 2px #000;
+}
+div[class^='point']:hover {
+	box-shadow: 0 0 4px #222 inset;
+	opacity: 1;
+}
+div[class^='list_point']{
+	width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+	box-shadow: 1px 1px 2px #000;
+	float: left;
+	margin: 10px;
+
+	text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+div[class^='descr_'] {
+	display: none;
+	width: 200px;
+	position: absolute;
+	top: 25px;
+	left: 140px;
+	background: #636B70;
+	color: rgba(255, 252, 252, 0.87);
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 2;
+}
+	div[class^='descr_'] a {
+		text-decoration: none;
+		color: rgba(255, 252, 252, 0.87);
+		font-style: italic;
+	}
+.closeBut {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: -10px;
+	right: -15px;
+	background: url(../img/Close_button_red.png);
+	cursor: pointer;
+}
+.load{
+	height: 11px;
+	width: 16px;
+	background: url(../img/loader.gif);
+	position: absolute;
+	top: 425px;
+	left: 467px;
+}
+div.filerArea {
+	position: relative;
+
+}
+.dropDawn {
+	width: 500px;
+	height: 45px;
+	margin: 10px 30px;
+	display: none;
+	position: relative;
+	background: #636B70;
+	color: rgba(255, 252, 252, 0.87);
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+.dropDawn ul {
+	padding: 0
+}
+.dropDawn li {
+	list-style: none;
+	cursor: pointer;
+	text-align: center;
+	font-size: 1.5em;
+	padding: 5px;
+	color: rgba(255, 252, 252, 0.87)
+}
+.dropDawn li.red:hover {
+	color: red;
+}
+.dropDawn li.blue:hover {
+	color: blue
+}
+.arrow {
+	width: 30px;
+	height: 30px;
+	background: url(../img/arrow.png);
+	position: absolute;
+	left: 145px;
+	top: -8px;
+}
+.param {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	opacity: 0.1;
+	margin: -16px 0 0 -70px;
+	font-size: 2em;
+}

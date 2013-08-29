@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<title>AJAX with XML</title>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="main">
+       <h1>AJAX with XML</h1>
+      <div align="center" class="loader">
+      </div>
+      <h2>How it work</h2>
+      <ul>
+        <li>I used to jQuery Ajax, $.ajax, it's shortest way than create HMLHtttpRequest in pure JS, and good practice too</li>
+        <li>Creating $.ajax object, reading xml file from url, and if success begin parse</li>
+        <li>Beginning recursive loop through XML, parsing XML and write on fly dom element from our XML</li>
+        <li>Creating description and sticking the close button for them</li>
+        <li>Than we have methods, which reading positions of "x" and "y", the color value and putting them in directly css style</li>
+        <li>Also, I implement custom list of dots, client can choose properly object</li>
+        <li>It's mean, that we may to have a thousand of xml Objects(in our task it's dot), and automatically correct put them in our DOM </li>
+        <li>In this page are minimum of html, only this description, all elements generating in JS</li>
+      </ul>
+      <h2>How it use</h2>
+      <ol>
+        <li>First of all we must to generate XmlHtttpRequest</li>
+        <li>Click on button below for generate do it, if all status respond from server ok, than running image will disepired</li>
+        <button class="clickStart">Generate XHR</button>
+        <div class="load"></div>
+        <li>Now we already have got a news elements. You may find them in area block</li>
+        <li>Inside our callback AJAX we have methods for change position and color of elements. In our case it's dot</li>
+        <li>Below is the list of our dot witch we recived from AJAX request</li>
+        <li>Click to see allowable dots</li>
+        <div class="filerArea">
+          <button class="clickFilterDots">What dot show?</button>
+          <div class="arrow"></div>
+          <div class="dropDawn">
+            <ul></ul> 
+          </div>
+        </div>
+        <li>We all may see all allowable dots with right css value</li>
+        <button class="clickShowHideObj">Show/Hide XML object</button>
+        <li>And in the end we want to see details of ours dot</li>
+        <li>You may click on dots</li>
+        <li>For see all allowable descriptions fire bellow button</li>
+        <button class="clickShowHideDetail">Show/Hide details of XML object</button>
+        <li>For close description click on button, close button in description, or on dot</li>
+      </ol> 
+      
+      <div class="area"><!-- <div class="param">600x300px</div> --></div>
+    </div>
+<script>
+
+  $(".clickStart").one("click", function(){
+
+    $('.load').fadeOut(1000);
+
+    $(function() {
+    $.ajax({
+      type: "GET",
+      url: "xml/dots.xml",
+      cache: false,
+      dataType: "xml",
+      success: xmlParser // if status of server OK than start xmlParcer function
+      });
+    });
+
+    function xmlParser(xml) {
+      console.log("xmlParser()")
+      //begin recurcive loop through XML
+      //parce xml and write dom element for dot
+      $(xml).find("Dots").each(function(){
+        var dot = $(this); //revrite for local trigger
+
+        $(".area").append('<div class="'+ dot.find("Title").text()+'"><div class="title">Title - ' + dot.find("Title").text() + '</div><div class="color">' + dot.find("Color").text() + '</div><div class="coordx">' + dot.find("Coordx").text() + '</div><div class="coordy">' + dot.find("Coordy").text() + '</div><div class="link">' + dot.find("Link").text() + '</div><div class="description">' + dot.find("Description").text() + '</div></div>');
+        
+        $(".area").append('<div class="descr_'+ dot.find("Title").text()+'"><div class="title">Title - ' + dot.find("Title").text() + '</div><div class="color">' + dot.find("Color").text() + '</div><div class="coordx">' + dot.find("Coordx").text() + '</div><div class="coordy">' + dot.find("Coordy").text() + '</div><div class="link"><a href=' + dot.find("Link").text() + '>' + dot.find("Link").text() + '</a></div><div class="description">' + dot.find("Description").text() + '</div></div>');
+
+        $(".dropDawn ul").append('<div class="list_'+ dot.find("Title").text()+'"><div class="' + dot.find("Color").text() +'"></div><div class="color">' + dot.find("Color").text() + '</div></div>');   
+      });
+
+     //manipulations with dot css values
+      changeTopPos("div[class^='point'] .coordx");
+      changeLeftPos("div[class^='point'] .coordy");
+      changeTopPosDescr("div[class^='descr_'] .coordx");
+      changeLeftPosDescr("div[class^='descr_'] .coordy");
+      changeColor(".color");
+      hideText("div[class^='point']")
+
+      //create closebutton for all dots and handler for close details
+      $("<div>", {
+        "class": "closeBut"
+      }).appendTo(".area > div[class^='descr_']");
+
+      $("div.closeBut").on("click", function() {
+        var localE = $(this)
+        localE.parent().fadeOut(1000);
+      })
+
+      //
+      $("div[class^='list_']:nth-child(1)").on("click", function() {
+        $("div[class^='point']:nth-child(1)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(2)").on("click", function() {
+        $("div[class^='point']:nth-child(3)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(3)").on("click", function() {
+        $("div[class^='point']:nth-child(5)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(4)").on("click", function() {
+        $("div[class^='point']:nth-child(7)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(5)").on("click", function() {
+        $("div[class^='point']:nth-child(9)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(6)").on("click", function() {
+        $("div[class^='point']:nth-child(11)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(7)").on("click", function() {
+        $("div[class^='point']:nth-child(13)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(8)").on("click", function() {
+        $("div[class^='point']:nth-child(15)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(9)").on("click", function() {
+        $("div[class^='point']:nth-child(17)").toggle("slow");
+      })
+      $("div[class^='list_']:nth-child(10)").on("click", function() {
+        $("div[class^='point']:nth-child(19)").toggle("slow");
+      })
+
+      $("div[class^='point']").on("click", function() {
+        $(this).next().fadeToggle(500);
+        
+      })
+
+    };
+
+  })//end $.ajax
+  
+  //show/hide event for dots
+  $(".clickShowHideObj").on("click", function() {
+    $("div[class^='point']").toggle("slow");
+    console.log("toggle dots")
+  });
+
+  //show/hide event for details
+  $(".clickShowHideDetail").on("click", function() {
+  $("div[class^='descr_']").toggle("slow");
+  });
+
+ //event for list of dots
+  $(".clickFilterDots").on("click", function() {
+    $(".dropDawn").slideDown(200);
+    console.log("clickFilterDots working")
+  })
+
+//change topPos
+function changeTopPos(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    var elemText = e.text(); //get text-coordinate
+    e.text("Coordinate x : " + elemText) //change into pretty text
+    e.parent().css("top", elemText + "px") //change css to the parents
+  }
+  console.log("changeTopPos()")
+};
+//change TopPos for descriptions
+function changeTopPosDescr(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    var elemText = e.text(); //get text-coordinate
+    var elemTextCss = +elemText - 25; //parseInt && add move coordinate
+    e.text("Coordinate y : " + elemText) //change into pretty text
+    e.parent().css("top", elemTextCss + "px") //change css to the parents
+  }
+  console.log("changeLeftPosDescr()")
+};
+//change topLeft
+function changeLeftPos(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    var elemText = e.text(); //get text-coordinate
+    e.text("Coordinate y : " + elemText) //change into pretty text
+    e.parent().css("left", elemText + "px") //change css to the parents
+  }
+  console.log("changeLeftPos()")
+};
+//change LeftPos for descriptions
+function changeLeftPosDescr(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    var elemText = e.text(); //get text-coordinate
+    var elemTextCss = +elemText + 30; //parseInt && add move coordinate
+    e.text("Coordinate x : " + elemText) //change into pretty text
+    e.parent().css("left", elemTextCss + "px") //change css to the parents
+  }
+  console.log("changeLeftPosDescr()")
+};
+//change color
+function changeColor(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    var elemText = e.text(); //get text-coordinate
+    e.text("Dot color : " + elemText) //change into pretty text
+    e.parent().css("background-color", elemText) //change css to the parents
+  }
+  console.log("changeLeftPos()")
+};
+//add css value for correct display dots
+function goIntoDot(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    e.css({
+    })
+  }
+  console.log("goIntoDot()")
+}
+//hide text
+function hideText(DomElem) {
+  var elem = $(DomElem); //handle element from DOM
+  //loop fot elem
+  for(var i = 0; i<elem.length; i++) {
+    var e = $(elem[i]);  //write local var
+    //console.log(e);
+    //console.log(e.children());
+    e.children().css({
+      "text-indent": "100%",
+      "white-space": "nowrap",
+      "overflow": "hidden"
+    })
+  }
+  console.log("hideText()");
+}
+
+</script>
+</body>
+</html>

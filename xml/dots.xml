@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecentDots>
+  <Dots>
+    <Coordx>130</Coordx>
+    <Coordy>40</Coordy>
+    <Color>red</Color>
+    <Title>pointAlpha</Title>
+    <Link>http://www.dribbble.com</Link>
+    <Description>Dribbble is a place to show and tell, promote, discover, and explore design</Description>
+  </Dots>
+  <Dots>
+    <Coordx>35</Coordx>
+    <Coordy>70</Coordy>
+    <Color>blue</Color>
+    <Title>pointBeta</Title>
+    <Link>http://www.csstricks.com</Link>
+    <Description>Csstricks is a place to show and tell, promote, discover, and explore design</Description>
+  </Dots>
+  <Dots>
+    <Coordy>160</Coordy>
+    <Coordx>65</Coordx>
+    <Color>green</Color>
+    <Title>pointDelta</Title>
+    <Link>http://javascript.ru</Link>
+    <Description>One of the best tutorial on ru pages</Description>
+  </Dots>
+  <Dots>
+    <Coordy>60</Coordy>
+    <Coordx>165</Coordx>
+    <Color>grey</Color>
+    <Title>pointEpsilon</Title>
+    <Link>http://stackoverflow.com</Link>
+    <Description>Have a questions, we always have a right answers</Description>
+  </Dots>
+  <Dots>
+    <Coordy>120</Coordy>
+    <Coordx>215</Coordx>
+    <Color>yellow</Color>
+    <Title>pointZeta</Title>
+    <Link>http://api.jquery.com</Link>
+    <Description>Api of one of most popular JS library</Description>
+  </Dots>
+  <Dots>
+    <Coordy>220</Coordy>
+    <Coordx>115</Coordx>
+    <Color>yellowgreen</Color>
+    <Title>pointEta</Title>
+    <Link>http://backbonejs.org</Link>
+    <Description>Api of one of most popular JS libraryBackbone.js gives structure to web applications by providing models with key-value binding</Description>
+  </Dots>
+  <Dots>
+    <Coordy>290</Coordy>
+    <Coordx>185</Coordx>
+    <Color>orange</Color>
+    <Title>pointKappa</Title>
+    <Link>http://backbonejs.org</Link>
+    <Description>Api of one of most popular JS libraryBackbone.js gives structure to web applications by providing models with key-value binding</Description>
+  </Dots>
+  <Dots>
+    <Coordy>350</Coordy>
+    <Coordx>50</Coordx>
+    <Color>pink</Color>
+    <Title>pointOmega</Title>
+    <Link>http://rubyonrails.org</Link>
+    <Description>Powerful web applications that formerly might have taken weeks or months to develop can be produced in a matter of days</Description>
+  </Dots>
+  <Dots>
+    <Coordy>390</Coordy>
+    <Coordx>90</Coordx>
+    <Color>black</Color>
+    <Title>pointEfa</Title>
+    <Link>https://github.com</Link>
+    <Description>Powerful collaboration, code review, and code management for open source and private projects. Need private repositories?</Description>
+  </Dots>
+  <Dots>
+    <Coordy>450</Coordy>
+    <Coordx>180</Coordx>
+    <Color>violet</Color>
+    <Title>pointEfa</Title>
+    <Link>http://www.sublimetext.com</Link>
+    <Description>You'll love the slick user interface, extraordinary features and amazing performance</Description>
+  </Dots>
+</RecentDots>
